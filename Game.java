@@ -31,25 +31,49 @@ public class Game
     private void createRooms()
     {
         Room bedroom, castle_hallway, armory, throne_room, outside, pond, forest, cave, mysterious_room, cave_opening, cave_hole, 
-        vorkalth;
+        cave_east, vorkalth;
       
         // create the rooms
-        bedroom = new Room("inside Sir Rumplebottom's castle bedroom");
-        castle_hallway = new Room("inside the main castle hallway");
-        armory = new Room("inside the castle's room full of weaponry and armor");
-        outside = new Room("outside the main entrance of the castle");
+        bedroom = new Room("inside Sir Rumplebottom's castle bedroom.");
+        castle_hallway = new Room("inside the main castle hallway.");
+        armory = new Room("inside the castle's room full of weaponry and armor.");
+        throne_room = new Room("inside the king's throne room.");
+        outside = new Room("outside the entrance of the castle.");
+        pond = new Room("outside overlooking a large pond.");
+        forest = new Room("inside a dark forest.");
+        cave = new Room("inside a pitch black cave. I hope you brought a lamp!");
+        mysterious_room = new Room("inside a mysterious glowing part of the cave.");
+        cave_opening = new Room("outside the cave. You are blocked by a large boulder.");
+        cave_hole = new Room("inside a dark hole with no way out.");
+        cave_east = new Room("inside the eastern part of the cave. There is a bright blue portal south of you. ");
+        vorkalth = new Room("inside Lord Vorkalth's room.");
         
         
         // initialise room exits
         bedroom.setExit("west", castle_hallway);
         castle_hallway.setExit("north", throne_room);
-        castle_hallway.setExit("north", throne_room);
+        castle_hallway.setExit("east", bedroom);
+        castle_hallway.setExit("west", armory);
+        armory.setExit("east", castle_hallway);
+        throne_room.setExit("south", castle_hallway);
+        castle_hallway.setExit("south", outside);
+        outside.setExit("north", castle_hallway);
         outside.setExit("east", pond);
         outside.setExit("south", forest);
-
+        pond.setExit("west", outside);
+        forest.setExit("south", cave);
+        forest.setExit("north", outside);
+        cave.setExit("west", mysterious_room);
+        cave.setExit("south", cave_hole);
+        cave.setExit("north", forest);
+        cave.setExit("east", cave_east);
+        mysterious_room.setExit("north", cave_opening);
+        cave_opening.setExit("south", mysterious_room);
+        cave_east.setExit("south", vorkalth);
+        
         
 
-        currentRoom = outside;  // start game outside
+        currentRoom = bedroom;  // start game inside bedroom
     }
 
     /**
