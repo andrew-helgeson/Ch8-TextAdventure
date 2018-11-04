@@ -30,28 +30,24 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room bedroom, castle_hallway, armory, throne_room, outside, pond, forest, cave, mysterious_room, cave_opening, cave_hole, 
+        vorkalth;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        bedroom = new Room("inside Sir Rumplebottom's castle bedroom");
+        castle_hallway = new Room("inside the main castle hallway");
+        armory = new Room("inside the castle's room full of weaponry and armor");
+        outside = new Room("outside the main entrance of the castle");
+        
         
         // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        bedroom.setExit("west", castle_hallway);
+        castle_hallway.setExit("north", throne_room);
+        castle_hallway.setExit("north", throne_room);
+        outside.setExit("east", pond);
+        outside.setExit("south", forest);
 
-        theater.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
+        
 
         currentRoom = outside;  // start game outside
     }
@@ -111,6 +107,11 @@ public class Game
             case GO:
                 goRoom(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
+                
 
             case QUIT:
                 wantToQuit = quit(command);
@@ -164,6 +165,12 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+    
+    private void look()
+    {
+        //look method prints out the long description of current room.
+        System.out.println(currentRoom.getLongDescription());
     }
 
     /** 
