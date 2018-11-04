@@ -1,18 +1,14 @@
 /**
- *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
+ *  This class is the main class of "Kingdom of Guardia"
+ *  You play as Sir Rumplebottom. The Kingdom of Guardia has been cursed by the evil Lord Vorkalth.
+ *  The king has ordered you to go on a dangerous jounrey and defeat Lord Vorkalth.
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
  * 
- *  This main class creates and initialises all the others: it creates all
- *  rooms, creates the parser and starts the game.  It also evaluates and
- *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2011.08.10
+ * @author  Andrew Helgeson
+ * @version 2018.11.04
  */
 
 public class Game 
@@ -84,8 +80,9 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to the Kingdom of Guardia!");
+        System.out.println("You are valiant knight named Sir Rumplebottom.");
+        System.out.println("The king has ordered you to put a stop to the evil Lord Vorkalth, who has cursed your land");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -131,8 +128,13 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are valiant knight named Sir Rumplebottom.");
+        System.out.println("Your kingdom has been cursed by the Evil Lord Vorkalth.");
+        System.out.println("The kingdom has fallen into chaos.");
+        System.out.println("No longer do truth and justice reign supreme;");
+        System.out.println("instead, your home has fallen into chaos.");
+        System.out.println("It is up to you to thwart Lord Vorkalth's evil scheme.");
+        System.out.println("You decide to embark on a dangerous quest with your trusty sidekick, Zaksodo, who is a magical talking cat.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
