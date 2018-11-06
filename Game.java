@@ -15,6 +15,9 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Item helditem;
+    public boolean hasLamp = false;
+    public boolean hasSword = false;
         
     /**
      * Create the game and initialise its internal map.
@@ -22,6 +25,7 @@ public class Game
     public Game() 
     {
         createRooms();
+        createItems();
         parser = new Parser();
     }
 
@@ -36,17 +40,19 @@ public class Game
         // create the rooms
         bedroom = new Room("inside Sir Rumplebottom's castle bedroom.");
         castle_hallway = new Room("inside the main castle hallway.");
-        armory = new Room("inside the castle's room full of weaponry and armor.");
-        throne_room = new Room("inside the king's throne room.");
+        armory = new Room("inside the castle's room full of weaponry and armor. You see a sword reflecting the sun's light, and you pick it up. You now have the Sword of Truth");
+        throne_room = new Room("inside the king's throne room. You see the king sitting on his throne.");
         outside = new Room("outside the entrance of the castle.");
         pond = new Room("outside overlooking a large pond.");
-        forest = new Room("inside a dark forest.");
-        cave = new Room("inside a pitch black cave. I hope you brought a lamp!");
+        forest = new Room("inside a dark forest. You see a large opening to a cave.");
+        cave = new Room("inside a pitch black cave. The only light you see is your lamp.");
         mysterious_room = new Room("inside a mysterious glowing part of the cave.");
         cave_opening = new Room("outside the cave. You are blocked by a large boulder.");
         cave_hole = new Room("inside a dark hole with no way out.");
         cave_east = new Room("inside the eastern part of the cave. There is a bright blue portal south of you. ");
-        vorkalth = new Room("inside Lord Vorkalth's room.");
+        vorkalth = new Room("You go through the portal. ");
+        
+        
         
         
         // initialise room exits
@@ -73,7 +79,28 @@ public class Game
         
         
 
-        currentRoom = bedroom;  // start game inside bedroom
+        currentRoom = bedroom;
+        
+        
+        if (currentRoom == armory)
+        {
+            hasSword = true;
+        }
+        
+        if (currentRoom == throne_room)
+        {
+            hasLamp = true;
+        }
+        
+    }
+    
+    private void createItems()
+    {
+        // create items
+        Item sword, lamp;
+        
+        sword = new Item("Sword of Truth", 5);
+        lamp = new Item("Lamp", 1);
     }
 
     /**
@@ -159,7 +186,7 @@ public class Game
         System.out.println("No longer do truth and justice reign supreme;");
         System.out.println("instead, your home has fallen into chaos.");
         System.out.println("It is up to you to thwart Lord Vorkalth's evil scheme.");
-        System.out.println("You decide to embark on a dangerous quest with your trusty sidekick, Zaksodo, who is a magical talking cat.");
+        System.out.println("You decide to embark on this dangerous quest");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
@@ -189,6 +216,7 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+        
     }
     
     private void look()
